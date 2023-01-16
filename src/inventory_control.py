@@ -30,6 +30,8 @@ class InventoryControl:
         buy_list = {}
 
         for item in self.updated_inventory:
-            buy_list[item] = self.MINIMUM_INVENTORY[item] - self.updated_inventory[item]
+            buy_list[item] = (
+                self.MINIMUM_INVENTORY[item] - self.updated_inventory[item]
+            )
 
         return buy_list

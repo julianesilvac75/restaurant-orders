@@ -48,7 +48,7 @@ class TrackOrders:
                 days.add(order[2])
 
         return days
-        
+
     def get_days_never_visited_per_customer(self, customer):
         customer_days = self.get_days_visited_per_customer(customer)
         all_days = set()
@@ -78,5 +78,5 @@ class TrackOrders:
     def get_least_busy_day(self):
         counter = self.get_customers_quantity_by_day()
         day = min(counter.items(), key=lambda x: x[1])[0]
-        
+
         return day

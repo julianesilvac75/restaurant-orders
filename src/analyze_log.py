@@ -75,9 +75,17 @@ def analyze_log(path_to_file):
     orders = get_logs(path_to_file)
 
     orders_maria = most_ordered_by_client(orders, "maria")
-    burgers_arnaldo = product_quantity_by_client(orders, "arnaldo", "hamburguer")
-    not_ordered_joao = get_products_list(orders).difference(orders_by_client(orders, "joao").keys())
-    days_not_went_joao = get_all_days(orders).difference(days_by_client(orders, "joao"))
+    burgers_arnaldo = (
+        product_quantity_by_client(orders, "arnaldo", "hamburguer")
+    )
+    not_ordered_joao = (
+        get_products_list(orders)
+        .difference(orders_by_client(orders, "joao").keys())
+    )
+    days_not_went_joao = (
+        get_all_days(orders)
+        .difference(days_by_client(orders, "joao"))
+    )
 
     print(days_not_went_joao)
     with open("data/mkt_campaign.txt", "w") as file:

@@ -16,10 +16,20 @@ class InventoryControl:
     }
 
     def __init__(self):
-        pass
+        self.orders = []
+        self.updated_inventory = self.MINIMUM_INVENTORY.copy()
 
     def add_new_order(self, customer, order, day):
-        pass
+        ingredients = self.INGREDIENTS[order]
+        for item in ingredients:
+            self.updated_inventory[item] -= 1
+
+        self.orders.append((customer, order, day))
 
     def get_quantities_to_buy(self):
-        pass
+        buy_list = {}
+
+        for item in self.updated_inventory:
+            buy_list[item] = self.MINIMUM_INVENTORY[item] - self.updated_inventory[item]
+
+        return buy_list

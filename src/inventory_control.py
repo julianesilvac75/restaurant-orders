@@ -42,12 +42,17 @@ class InventoryControl:
     def get_available_dishes(self):
         all_dishes = set(self.INGREDIENTS.keys())
         ingredients_available = {
-            ingredient for ingredient in self.updated_inventory if self.updated_inventory[ingredient] > 0
+            ingredient for ingredient
+            in self.updated_inventory
+            if self.updated_inventory[ingredient] > 0
         }
         dishes_available = set()
 
         for dish in all_dishes:
-            if set(self.INGREDIENTS[dish]).issubset(set(ingredients_available)):
+            if (
+                set(self.INGREDIENTS[dish])
+                .issubset(set(ingredients_available))
+            ):
                 dishes_available.add(dish)
 
         return dishes_available

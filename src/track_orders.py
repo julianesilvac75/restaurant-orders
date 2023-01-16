@@ -32,7 +32,13 @@ class TrackOrders:
         return product
 
     def get_never_ordered_per_customer(self, customer):
-        pass
+        total_orders = self.get_total_dishes_ordered_per_customer(customer)
+        all_orders = set()
+        for order in self.orders:
+            all_orders.add(order[1])
+
+        never_ordered = all_orders.difference(total_orders)
+        return never_ordered
 
     def get_days_never_visited_per_customer(self, customer):
         pass
